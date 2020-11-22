@@ -152,7 +152,7 @@
   /* Функция закрытия поп-апа Заказать звонок при нажатии на Escape */
 
   var onCallBackKeydown = function (evt) {
-    if (evt.key === 'Escape') {
+    if (evt.keyCode === 27) {
       closeCallBack();
     }
   };
@@ -168,7 +168,7 @@
   /* Функция закрытия поп-апа Заявка принята при нажатии на Escape */
 
   var onSuccessModalKeydown = function (evt) {
-    if (evt.key === 'Escape') {
+    if (evt.keyCode === 27) {
       closeSuccessModal();
     }
   };
@@ -287,13 +287,11 @@
   // Генерирует сообщение об ошибке
 
   var getErrorElement = function (error) {
-    var errorTemplate = document.querySelector('#callback__error')
-        .content
-        .querySelector('.callback__error-message');
-    var errorElement = errorTemplate.cloneNode(true);
-    errorElement.textContent = error;
+    var span = document.createElement('span');
+    span.className = 'callback__error-message';
+    span.textContent = error;
 
-    return errorElement;
+    return span;
   };
 
   // Проверяет поле при вводе
